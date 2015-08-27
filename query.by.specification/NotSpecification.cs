@@ -1,10 +1,8 @@
 using System;
 using System.Linq.Expressions;
-using System.Runtime.Serialization;
 
 namespace query.@by.specification
 {
-    [DataContract]
     public class NotSpecification<T> : BaseSpecification<T>
     {
         public NotSpecification(ISpecification<T> inner)
@@ -12,7 +10,6 @@ namespace query.@by.specification
             Inner = inner;
         }
 
-        [DataMember]
         public ISpecification<T> Inner { get; set; }
 
         public override Expression<Func<T, bool>> GetPredicate()

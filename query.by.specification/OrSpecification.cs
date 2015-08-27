@@ -1,10 +1,8 @@
 using System;
 using System.Linq.Expressions;
-using System.Runtime.Serialization;
 
 namespace query.@by.specification
 {
-    [DataContract]
     public class OrSpecification<T> : CompositeSpecification<T>
     {
         public OrSpecification(ISpecification<T> left, ISpecification<T> right) : base(left, right)
