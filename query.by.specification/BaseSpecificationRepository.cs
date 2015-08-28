@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using query.@by.specification.Extensions;
 
 namespace query.@by.specification
 {
@@ -7,29 +8,29 @@ namespace query.@by.specification
     {
         public abstract IQueryable<T> Expandable { get; }
 
-        public IList<T> FindBy(ISpecification<T> specification)
+        public IList<T> FindBy(ISpecification<T> specification, IFetchStrategy<T> fetchStrategy = null)
         {
-            return Expandable.Where(specification.GetPredicate()).ToList();
+            return Expandable.Where(specification.GetPredicate()).Include(fetchStrategy).ToList();
         }
 
-        public T First(ISpecification<T> specification)
+        public T First(ISpecification<T> specification, IFetchStrategy<T> fetchStrategy = null)
         {
-            return Expandable.First(specification.GetPredicate());
+            return FindBy(specification, fetchStrategy).First();
         }
 
-        public T FirstOrDefault(ISpecification<T> specification)
+        public T FirstOrDefault(ISpecification<T> specification, IFetchStrategy<T> fetchStrategy = null)
         {
-            return Expandable.FirstOrDefault(specification.GetPredicate());
+            return FindBy(specification, fetchStrategy).FirstOrDefault();
         }
 
-        public T Single(ISpecification<T> specification)
+        public T Single(ISpecification<T> specification, IFetchStrategy<T> fetchStrategy = null)
         {
-            return Expandable.Single(specification.GetPredicate());
+            return FindBy(specification, fetchStrategy).Single();
         }
 
-        public T SingleOrDefault(ISpecification<T> specification)
+        public T SingleOrDefault(ISpecification<T> specification, IFetchStrategy<T> fetchStrategy = null)
         {
-            return Expandable.SingleOrDefault(specification.GetPredicate());
+            return FindBy(specification, fetchStrategy).SingleOrDefault();
         }
     }
 }

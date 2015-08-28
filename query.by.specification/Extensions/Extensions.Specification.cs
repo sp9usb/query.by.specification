@@ -1,4 +1,4 @@
-namespace query.@by.specification
+namespace query.@by.specification.Extensions
 {
     public static class SpecificationExtensions
     {

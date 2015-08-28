@@ -44,12 +44,14 @@
     <Compile Include="BaseSpecification.cs" />
     <Compile Include="BaseSpecificationRepository.cs" />
     <Compile Include="CompositeSpecification.cs" />
+    <Compile Include="Extensions\Extensions.Specification.cs" />
+    <Compile Include="Extensions\Extensions.Queryable.cs" />
+    <Compile Include="IFetchStrategy.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="ISpecificationRepository.cs" />
     <Compile Include="NotSpecification.cs" />
     <Compile Include="OrSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecificationExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="query.by.specification.snk" />
