@@ -6,11 +6,17 @@ namespace query.@by.specification
 {
     public abstract class BaseSpecificationRepository<T> : ISpecificationRepository<T>
     {
-        public abstract IQueryable<T> Expandable { get; }
+        public abstract IQueryable<T> GetQuery();
+        public abstract IQueryable<T> AsExpandable(IQueryable<T> query);
 
         public IList<T> FindBy(ISpecification<T> specification, IFetchStrategy<T> fetchStrategy = null)
         {
-            return Expandable.Where(specification.GetPredicate()).Include(fetchStrategy).ToList();
+            return AsExpandable(GetQuery(fetchStrategy)).Where(specification.GetPredicate()).Include(fetchStrategy).ToList();
+        }
+
+        private IQueryable<T> GetQuery(IFetchStrategy<T> fetchStrategy)
+        {
+            return fetchStrategy != null ? fetchStrategy.Include(GetQuery()) : GetQuery();
         }
 
         public T First(ISpecification<T> specification, IFetchStrategy<T> fetchStrategy = null)
