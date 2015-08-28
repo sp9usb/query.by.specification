@@ -1,20 +1,14 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace query.@by.specification
 {
     public interface ISpecificationRepository<T>
     {
         IList<T> FindBy(ISpecification<T> specification);
-    }
 
-    public abstract class BaseSpecificationRepository<T> : ISpecificationRepository<T>
-    {
-        public abstract IQueryable<T> Expandable { get; }
-
-        public IList<T> FindBy(ISpecification<T> specification)
-        {
-            return Expandable.Where(specification.GetPredicate()).ToList();
-        }
+        T First(ISpecification<T> specification);
+        T FirstOrDefault(ISpecification<T> specification);
+        T Single(ISpecification<T> specification);
+        T SingleOrDefault(ISpecification<T> specification);
     }
 }

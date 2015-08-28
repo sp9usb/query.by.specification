@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AndSpecification.cs" />
     <Compile Include="BaseSpecification.cs" />
+    <Compile Include="BaseSpecificationRepository.cs" />
     <Compile Include="CompositeSpecification.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="ISpecificationRepository.cs" />
