@@ -14,13 +14,8 @@ namespace query.@by.specification.Specification
 
         public override Expression<Func<T, bool>> GetPredicate()
         {
-            var parameter = Expression.Parameter(typeof (T), typeof (T).ToString());
-
-            var negation =
-                Expression.Lambda<Func<T, bool>>(Expression.Not(Expression.Invoke(Inner.GetPredicate(), parameter)),
-                    parameter);
-
-            return negation;
+            var negated = Expression.Not(Inner.GetPredicate().Body);
+            return Expression.Lambda<Func<T, bool>>(negated, Inner.GetPredicate().Parameters);
         }
     }
 }

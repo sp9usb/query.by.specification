@@ -51,7 +51,9 @@
     <Compile Include="Specification\AndSpecification.cs" />
     <Compile Include="Specification\BaseSpecification.cs" />
     <Compile Include="Specification\CompositeSpecification.cs" />
+    <Compile Include="Specification\Extensions\Extensions.CompositeSpecification.cs" />
     <Compile Include="Specification\Extensions\Extensions.Specification.cs" />
+    <Compile Include="Specification\Extensions\Support\ParameterRebinder.cs" />
     <Compile Include="Specification\ISpecification.cs" />
     <Compile Include="Specification\NotSpecification.cs" />
     <Compile Include="Specification\OrSpecification.cs" />
