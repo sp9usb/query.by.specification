@@ -1,4 +1,4 @@
-namespace query.@by.specification
+namespace query.@by.specification.Specification
 {
     public abstract class CompositeSpecification<T> : BaseSpecification<T>
     {
