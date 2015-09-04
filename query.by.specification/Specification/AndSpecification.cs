@@ -6,7 +6,8 @@ namespace query.@by.specification.Specification
 {
     public class AndSpecification<T> : CompositeSpecification<T>
     {
-        public AndSpecification(ISpecification<T> left, ISpecification<T> right) : base(left, right)
+        public AndSpecification(BaseSpecification<T> left, BaseSpecification<T> right)
+            : base(left, right)
         {
         }
 

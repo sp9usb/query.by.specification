@@ -5,11 +5,11 @@ namespace query.@by.specification.Repository
 {
     public interface ISpecificationRepository<T> where T : class
     {
-        IList<T> FindBy(ISpecification<T> specification);
+        IList<T> FindBy(BaseSpecification<T> specification);
 
-        T First(ISpecification<T> specification);
-        T FirstOrDefault(ISpecification<T> specification);
-        T Single(ISpecification<T> specification);
-        T SingleOrDefault(ISpecification<T> specification);
+        T First(BaseSpecification<T> specification);
+        T FirstOrDefault(BaseSpecification<T> specification);
+        T Single(BaseSpecification<T> specification);
+        T SingleOrDefault(BaseSpecification<T> specification);
     }
 }

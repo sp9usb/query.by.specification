@@ -6,7 +6,8 @@ namespace query.@by.specification.Specification
 {
     public class OrSpecification<T> : CompositeSpecification<T>
     {
-        public OrSpecification(ISpecification<T> left, ISpecification<T> right) : base(left, right)
+        public OrSpecification(BaseSpecification<T> left, BaseSpecification<T> right)
+            : base(left, right)
         {
         }
 

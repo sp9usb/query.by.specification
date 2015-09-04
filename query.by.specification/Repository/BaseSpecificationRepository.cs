@@ -24,27 +24,27 @@ namespace query.@by.specification.Repository
             return clone;
         }
 
-        public IList<T> FindBy(ISpecification<T> specification)
+        public IList<T> FindBy(BaseSpecification<T> specification)
         {
             return GetQuery(Table, FetchStrategy).Where(specification.GetPredicate()).ToList();
         }
 
-        public T First(ISpecification<T> specification)
+        public T First(BaseSpecification<T> specification)
         {
             return FindBy(specification).First();
         }
 
-        public T FirstOrDefault(ISpecification<T> specification)
+        public T FirstOrDefault(BaseSpecification<T> specification)
         {
             return FindBy(specification).FirstOrDefault();
         }
 
-        public T Single(ISpecification<T> specification)
+        public T Single(BaseSpecification<T> specification)
         {
             return FindBy(specification).Single();
         }
 
-        public T SingleOrDefault(ISpecification<T> specification)
+        public T SingleOrDefault(BaseSpecification<T> specification)
         {
             return FindBy(specification).SingleOrDefault();
         }

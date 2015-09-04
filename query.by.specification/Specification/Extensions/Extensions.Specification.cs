@@ -2,17 +2,17 @@ namespace query.@by.specification.Specification.Extensions
 {
     public static class SpecificationExtensions
     {
-        public static ISpecification<T> And<T>(this ISpecification<T> left, ISpecification<T> right)
+        public static BaseSpecification<T> And<T>(this BaseSpecification<T> left, BaseSpecification<T> right)
         {
             return new AndSpecification<T>(left, right);
         }
 
-        public static ISpecification<T> Or<T>(this ISpecification<T> left, ISpecification<T> right)
+        public static BaseSpecification<T> Or<T>(this BaseSpecification<T> left, BaseSpecification<T> right)
         {
             return new OrSpecification<T>(left, right);
         }
 
-        public static ISpecification<T> Not<T>(this ISpecification<T> inner)
+        public static BaseSpecification<T> Not<T>(this BaseSpecification<T> inner)
         {
             return new NotSpecification<T>(inner);
         }
