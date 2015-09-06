@@ -2,12 +2,15 @@
 <package >
   <metadata>
     <id>query.by.specification.DataContracts</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <authors>Ryan Bartsch</authors>
     <owners>Yesmarket</owners>
     <licenseUrl>https://github.com/yesmarket/query.by.specification/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/yesmarket/query.by.specification</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Data contract serialization for the query.by.specification framework.</description>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
   </metadata>
 </package>
