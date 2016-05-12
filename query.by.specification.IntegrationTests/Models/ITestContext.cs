@@ -1,7 +1,7 @@
 using System.Data.Entity;
 using query.@by.specification.Context;
 
-namespace query.@by.specification.Tests.Models
+namespace query.@by.specification.IntegrationTests.Models
 {
     public interface ITestContext : IContext
     {

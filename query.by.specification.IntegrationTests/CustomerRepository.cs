@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using query.@by.specification.Context;
+﻿using query.@by.specification.Context;
+using query.@by.specification.IntegrationTests.Models;
 using query.@by.specification.Repository;
-using query.@by.specification.Tests.Models;
 
-namespace query.by.specification.Tests
+namespace query.@by.specification.IntegrationTests
 {
     public class CustomerRepository : BaseSpecificationRepository<Customer>
     {

@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Reflection;
 
-namespace query.by.specification.Tests.Models
+namespace query.@by.specification.IntegrationTests.Models
 {
     public class TestContext : DbContext, ITestContext
     {

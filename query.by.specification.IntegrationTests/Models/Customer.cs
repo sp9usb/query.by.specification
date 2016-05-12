@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 
-namespace query.by.specification.Tests.Models
+namespace query.@by.specification.IntegrationTests.Models
 {
     public partial class Customer
     {

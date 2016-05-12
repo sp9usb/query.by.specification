@@ -2,7 +2,7 @@ using System.Data.Entity;
 using System.Linq;
 using NSubstitute;
 
-namespace query.@by.specification.Tests.Extensions
+namespace query.@by.specification.IntegrationTests.Extensions
 {
     public static class DbSetExtensions
     {

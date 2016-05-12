@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using query.@by.specification.IntegrationTests.Models;
 using query.@by.specification.Specification;
-using query.@by.specification.Tests.Models;
 
-namespace query.by.specification.Tests.Specifications
+namespace query.@by.specification.IntegrationTests.Specifications
 {
     public class AddressSuburbSpecification : BaseSpecification<Customer>, IInclude<Customer>
     {

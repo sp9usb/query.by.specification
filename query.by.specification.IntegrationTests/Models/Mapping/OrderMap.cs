@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace query.by.specification.Tests.Models.Mapping
+namespace query.@by.specification.IntegrationTests.Models.Mapping
 {
     public class OrderMap : EntityTypeConfiguration<Order>
     {
