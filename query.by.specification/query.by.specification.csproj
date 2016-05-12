@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -38,28 +41,43 @@
     <AssemblyOriginatorKeyFile>query.by.specification.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.3.1, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.3.1\lib\net45\LinqKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="yesmarket.Linq.Expressions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b00dd3003ea40356, processorArchitecture=MSIL">
+      <HintPath>..\packages\yesmarket.Linq.Expressions.1.0.0\lib\net45\yesmarket.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FetchStrategy\IFetchStrategy.cs" />
-    <Compile Include="FetchStrategy\Include.cs" />
+    <Compile Include="Context\IContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseSpecificationRepository.cs" />
-    <Compile Include="Repository\IFetchStrategyRepository.cs" />
+    <Compile Include="Repository\Extensions\Extensions.Queryable.cs" />
     <Compile Include="Repository\ISpecificationRepository.cs" />
     <Compile Include="Specification\AndSpecification.cs" />
     <Compile Include="Specification\BaseSpecification.cs" />
     <Compile Include="Specification\CompositeSpecification.cs" />
-    <Compile Include="Specification\Extensions\Extensions.CompositeSpecification.cs" />
+    <Compile Include="Specification\Extensions\Extensions.Expression.cs" />
     <Compile Include="Specification\Extensions\Extensions.Specification.cs" />
-    <Compile Include="Specification\Extensions\Support\ParameterRebinder.cs" />
+    <Compile Include="Specification\IInclude.cs" />
     <Compile Include="Specification\NotSpecification.cs" />
     <Compile Include="Specification\OrSpecification.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="query.by.specification.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

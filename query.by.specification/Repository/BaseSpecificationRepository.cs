@@ -1,32 +1,28 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using query.@by.specification.FetchStrategy;
+using LinqKit;
+using query.@by.specification.Context;
+using query.@by.specification.Repository.Extensions;
 using query.@by.specification.Specification;
 
 namespace query.@by.specification.Repository
 {
-    public abstract class BaseSpecificationRepository<T> : IFetchStrategyRepository<T> where T : class
+    public abstract class BaseSpecificationRepository<T> : ISpecificationRepository<T> where T : class
     {
-        protected internal IFetchStrategy<T> FetchStrategy;
-        public abstract IQueryable<T> Table { get; }
+        private readonly IContext _context;
 
-        public ISpecificationRepository<T> WithFetchStrategy(IFetchStrategy<T> fetchStrategy)
+        protected BaseSpecificationRepository(IContext context)
         {
-            var clone = MemberwiseClone() as BaseSpecificationRepository<T>;
-            if (clone == null)
-            {
-                throw new Exception("Unable to create shallow clone of repository");
-            }
-
-            clone.FetchStrategy = fetchStrategy;
-
-            return clone;
+            _context = context;
         }
 
-        public IList<T> FindBy(BaseSpecification<T> specification)
+        private IQueryable<T> FindBy(BaseSpecification<T> specification)
         {
-            return GetQuery(Table, FetchStrategy).Where(specification.GetPredicate()).ToList();
+            return
+                _context.Table<T>()
+                    .Fetch(specification.GetSpecifications().OfType<IInclude<T>>())
+                    .AsExpandable()
+                    .Where(specification.Predicate);
         }
 
         public T First(BaseSpecification<T> specification)
@@ -39,6 +35,11 @@ namespace query.@by.specification.Repository
             return FindBy(specification).FirstOrDefault();
         }
 
+        public IList<T> List(BaseSpecification<T> specification)
+        {
+            return FindBy(specification).ToList();
+        }
+
         public T Single(BaseSpecification<T> specification)
         {
             return FindBy(specification).Single();
@@ -48,7 +49,5 @@ namespace query.@by.specification.Repository
         {
             return FindBy(specification).SingleOrDefault();
         }
-
-        protected abstract IQueryable<T> GetQuery(IQueryable<T> query, IFetchStrategy<T> fetchStrategy);
     }
 }

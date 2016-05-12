@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using query.@by.specification.Specification.Extensions;
 
 namespace query.@by.specification.Specification
 {
-    public class NotSpecification<T> : BaseSpecification<T>
+    public sealed class NotSpecification<T> : BaseSpecification<T>
     {
         public NotSpecification(BaseSpecification<T> inner)
         {
@@ -12,10 +14,11 @@ namespace query.@by.specification.Specification
 
         public BaseSpecification<T> Inner { get; set; }
 
-        public override Expression<Func<T, bool>> GetPredicate()
+        public override Expression<Func<T, bool>> Predicate => Inner.Predicate.Invert();
+
+        internal override IEnumerable<BaseSpecification<T>> GetSpecifications()
         {
-            var negated = Expression.Not(Inner.GetPredicate().Body);
-            return Expression.Lambda<Func<T, bool>>(negated, Inner.GetPredicate().Parameters);
+            return Inner.GetSpecifications();
         }
     }
 }
