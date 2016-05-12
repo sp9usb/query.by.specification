@@ -50,7 +50,7 @@ These specifications can be chained together using a fluent interface and querie
 
 Pretty nice, huh? Ok the fluent interface is pretty crude, but you could easily write your own internal DSL to make things really user friendly.
 
-It's also possible to customise your fetch strategy (to aviod n+1 issues), by making your specifications implement IInclude`<T`>:
+It's also possible to customise your fetch strategy (to aviod n+1 issues), by making your specifications implement <code lang="cs" linenumbers="off">`IInclude<T>`</code>:
 
     public class AddressSuburbSpecification : BaseSpecification<Customer>, IInclude<Customer>
     {
