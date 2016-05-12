@@ -11,6 +11,9 @@ namespace query.@by.specification.Specification
         {
         }
 
-        public override Expression<Func<T, bool>> Predicate => Left.Predicate.And(Right.Predicate);
+        public override Expression<Func<T, bool>> Predicate
+        {
+            get { return Left.Predicate.And(Right.Predicate); }
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace query.@by.specification.Specification
             Right = right;
         }
 
-        public BaseSpecification<T> Left { get; set; }
-        public BaseSpecification<T> Right { get; set; }
+        protected BaseSpecification<T> Left { get; private set; }
+        protected BaseSpecification<T> Right { get; private set; }
 
         internal override IEnumerable<BaseSpecification<T>> GetSpecifications()
         {

@@ -12,9 +12,12 @@ namespace query.@by.specification.Specification
             Inner = inner;
         }
 
-        public BaseSpecification<T> Inner { get; set; }
+        private BaseSpecification<T> Inner { get; set; }
 
-        public override Expression<Func<T, bool>> Predicate => Inner.Predicate.Invert();
+        public override Expression<Func<T, bool>> Predicate
+        {
+            get { return Inner.Predicate.Invert(); }
+        }
 
         internal override IEnumerable<BaseSpecification<T>> GetSpecifications()
         {

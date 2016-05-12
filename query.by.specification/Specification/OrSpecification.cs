@@ -10,6 +10,10 @@ namespace query.@by.specification.Specification
             : base(left, right)
         {
         }
-        public override Expression<Func<T, bool>> Predicate => Left.Predicate.Or(Right.Predicate);
+
+        public override Expression<Func<T, bool>> Predicate
+        {
+            get { return Left.Predicate.Or(Right.Predicate); }
+        }
     }
 }
