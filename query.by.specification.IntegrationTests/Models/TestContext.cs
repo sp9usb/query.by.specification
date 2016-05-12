@@ -1,40 +1,40 @@
-using System;
+using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Reflection;
+using query.@by.specification.IntegrationTests.Models.Mapping;
 
 namespace query.@by.specification.IntegrationTests.Models
 {
     public class TestContext : DbContext, ITestContext
     {
-        public TestContext() : base("Test")
+        public TestContext()
+        {
+        }
+
+        public TestContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
 	    {
         }
 
-        public IDbSet<Address> Addresses { get; set; }
-        public IDbSet<Customer> Customers { get; set; }
-        public IDbSet<LineItem> LineItems { get; set; }
-        public IDbSet<Order> Orders { get; set; }
-        public IDbSet<Product> Products { get; set; }
+        public TestContext(DbConnection existingConnection)
+            : base(existingConnection, false)
+        {
+        }
+
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        //public IDbSet<LineItem> LineItems { get; set; }
+        //public IDbSet<Order> Orders { get; set; }
+        //public IDbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var typesToRegister =
-                Assembly.GetExecutingAssembly()
-                    .GetTypes()
-                    .Where(
-                        type =>
-                            !string.IsNullOrEmpty(type.Namespace) &&
-                            type.Namespace.ToLower().EndsWith("mapping") &&
-                            type.BaseType != null &&
-                            type.BaseType.IsGenericType &&
-                            type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
-
-            foreach (var configurationInstance in typesToRegister.Select(Activator.CreateInstance))
-            {
-                modelBuilder.Configurations.Add((dynamic)configurationInstance);
-            }
+            modelBuilder.Configurations.Add(new AddressMap());
+            modelBuilder.Configurations.Add(new CustomerMap());
+            //modelBuilder.Configurations.Add(new LineItemMap());
+            //modelBuilder.Configurations.Add(new OrderMap());
+            //modelBuilder.Configurations.Add(new ProductMap());
 
             base.OnModelCreating(modelBuilder);
         }
