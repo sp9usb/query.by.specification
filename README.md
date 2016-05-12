@@ -1,6 +1,6 @@
 # query.by.specification
 
-A simple query-by-specification framework that uses LINQ expressions
+A simple query-by-specification framework for Entity Framework that uses LINQ expressions
 
 ### Overview
 
@@ -8,7 +8,7 @@ The repository pattern is quite often the default option when building a data ac
 
     _repository.GetCustomers(firstName: "Ryan", surname: "Bartsch");
 
-In some situations this approach can cause a few issues whereby more and more repository methods are added for every concievable combination of queryable parameters:
+In some situations this approach can cause a few issues, whereby more and more repository methods are added for every concievable combination of queryable parameters:
 
     public interface ICustomerRepository
     {
@@ -48,9 +48,9 @@ These specifications can be chained together using a fluent interface and querie
 
     _repository.List(new CustomerSurnameSpecification("Ryan").And(new NotSpecification<Customer>(new CustomerFirstNameSpecification("Smith").Or(new CustomerFirstNameSpecification("Jones")))));
 
-Pretty nice, huh?
+Pretty nice, huh? Ok the fluent interface is pretty crude, but you could easily write your own internal DSL to make things really user friendly.
 
-It's also possible to customise your fetch strategy (to aviod n+1 issues), by making your specifications implement IInclude<T>:
+It's also possible to customise your fetch strategy (to aviod n+1 issues), by making your specifications implement IInclude`<T`>:
 
     public class AddressSuburbSpecification : BaseSpecification<Customer>, IInclude<Customer>
     {
