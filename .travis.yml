@@ -1,2 +1,6 @@
 language: csharp
 solution: query.by.specification.sln
+before_install:
+  - sudo apt-get install nunit-console
+after_script:
+  - nunit-console query.by.specification.IntegrationTests/bin/Release/query.by.specification.IntegrationTests.dll
