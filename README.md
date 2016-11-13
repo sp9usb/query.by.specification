@@ -1,4 +1,4 @@
-# query.by.specification
+# query.by.specification [![Build Status](https://travis-ci.org/yesmarket/query.by.specification.svg?branch=master)](https://travis-ci.org/yesmarket/query.by.specification)
 
 A simple query-by-specification framework for Entity Framework that uses LINQ expressions
 
