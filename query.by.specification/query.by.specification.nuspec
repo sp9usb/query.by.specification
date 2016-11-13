@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>query.by.specification</id>
-    <version>2.0.0</version>
+    <version>$version$</version>
     <authors>Ryan Bartsch</authors>
     <owners>Yesmarket</owners>
     <licenseUrl>https://github.com/yesmarket/query.by.specification/blob/master/LICENSE</licenseUrl>

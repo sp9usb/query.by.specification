@@ -1,4 +1,4 @@
-# query.by.specification [![Build Status](https://travis-ci.org/yesmarket/query.by.specification.svg?branch=master)](https://travis-ci.org/yesmarket/query.by.specification) [![NuGet Version](https://img.shields.io/nuget/v/query.by.specification.svg?style=flat)](https://www.nuget.org/packages/query.by.specification/)
+# query.by.specification [![Build status](https://ci.appveyor.com/api/projects/status/x52hv1rqkvc9fnb7?svg=true)](https://ci.appveyor.com/project/Certegy/publicholidays-au) [![Coverage Status](https://coveralls.io/repos/github/yesmarket/query.by.specification/badge.svg)](https://coveralls.io/github/yesmarket/query.by.specification) [![NuGet Version](https://img.shields.io/nuget/v/query.by.specification.svg?style=flat)](https://www.nuget.org/packages/query.by.specification/)
 
 A simple query-by-specification framework for Entity Framework that uses LINQ expressions
 
